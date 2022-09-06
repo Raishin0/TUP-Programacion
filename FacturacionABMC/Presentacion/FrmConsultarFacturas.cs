@@ -45,8 +45,18 @@ namespace FacturacionABMC.Presentacion
 
             if (DgvFacturas.CurrentCell.ColumnIndex == 5)
             {
-                QuitarFactura((int)DgvFacturas.CurrentRow.Cells[0].Value);
+                ModificarFactura((int)DgvFacturas.CurrentRow.Cells[0].Value,
+                    (DateTime)DgvFacturas.CurrentRow.Cells[1].Value, 
+                    (int)DgvFacturas.CurrentRow.Cells[2].Value,
+                    (string)DgvFacturas.CurrentRow.Cells[3].Value);
             }
+        }
+
+        private void ModificarFactura(int nro, DateTime fecha, int formaPago, string cliente)
+        {
+            Factura factura = new Factura(nro, fecha, formaPago, cliente);
+            FrmModificarFactura frmModificarFactura = new FrmModificarFactura(factura);
+            frmModificarFactura.Show();
         }
 
         private void QuitarFactura(int nroFactura)

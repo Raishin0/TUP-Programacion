@@ -38,9 +38,6 @@ namespace FacturacionABMC.Presentacion
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accion = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.BtnAgregar = new System.Windows.Forms.Button();
-            this.TbxCantidad = new System.Windows.Forms.TextBox();
-            this.CbxArticulos = new System.Windows.Forms.ComboBox();
             this.CbxFormaPago = new System.Windows.Forms.ComboBox();
             this.DtpFecha = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -100,12 +97,11 @@ namespace FacturacionABMC.Presentacion
             this.Cantidad,
             this.PrecioUnitario,
             this.Accion});
-            this.DgvDetalles.Location = new System.Drawing.Point(42, 261);
+            this.DgvDetalles.Location = new System.Drawing.Point(42, 226);
             this.DgvDetalles.Name = "DgvDetalles";
             this.DgvDetalles.ReadOnly = true;
-            this.DgvDetalles.Size = new System.Drawing.Size(509, 189);
+            this.DgvDetalles.Size = new System.Drawing.Size(509, 224);
             this.DgvDetalles.TabIndex = 28;
-            this.DgvDetalles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDetalles_CellContentClick);
             // 
             // Articulo
             // 
@@ -138,31 +134,6 @@ namespace FacturacionABMC.Presentacion
             this.Accion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Accion.Text = "Quitar";
             this.Accion.UseColumnTextForButtonValue = true;
-            // 
-            // BtnAgregar
-            // 
-            this.BtnAgregar.Location = new System.Drawing.Point(411, 234);
-            this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(75, 22);
-            this.BtnAgregar.TabIndex = 27;
-            this.BtnAgregar.Text = "Agregar";
-            this.BtnAgregar.UseVisualStyleBackColor = true;
-            // 
-            // TbxCantidad
-            // 
-            this.TbxCantidad.Location = new System.Drawing.Point(305, 235);
-            this.TbxCantidad.Name = "TbxCantidad";
-            this.TbxCantidad.Size = new System.Drawing.Size(99, 20);
-            this.TbxCantidad.TabIndex = 26;
-            // 
-            // CbxArticulos
-            // 
-            this.CbxArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbxArticulos.FormattingEnabled = true;
-            this.CbxArticulos.Location = new System.Drawing.Point(106, 235);
-            this.CbxArticulos.Name = "CbxArticulos";
-            this.CbxArticulos.Size = new System.Drawing.Size(192, 21);
-            this.CbxArticulos.TabIndex = 25;
             // 
             // CbxFormaPago
             // 
@@ -237,9 +208,6 @@ namespace FacturacionABMC.Presentacion
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnAceptar);
             this.Controls.Add(this.DgvDetalles);
-            this.Controls.Add(this.BtnAgregar);
-            this.Controls.Add(this.TbxCantidad);
-            this.Controls.Add(this.CbxArticulos);
             this.Controls.Add(this.CbxFormaPago);
             this.Controls.Add(this.DtpFecha);
             this.Controls.Add(this.label4);
@@ -266,9 +234,6 @@ namespace FacturacionABMC.Presentacion
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
         private System.Windows.Forms.DataGridViewButtonColumn Accion;
-        private System.Windows.Forms.Button BtnAgregar;
-        private System.Windows.Forms.TextBox TbxCantidad;
-        private System.Windows.Forms.ComboBox CbxArticulos;
         private System.Windows.Forms.ComboBox CbxFormaPago;
         private System.Windows.Forms.DateTimePicker DtpFecha;
         private System.Windows.Forms.Label label4;

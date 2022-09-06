@@ -16,15 +16,13 @@ namespace FacturacionABMC.Presentacion
     {
         HelperDB gestor = new HelperDB();
         Factura factura;
-        public FrmModificarFactura()
+        public FrmModificarFactura(Factura factura)
         {
-            factura = new Factura();
-            CargarArticulos();
+            this.factura = factura;
 
-            ProximaFactura();
+            CargarFactura();
             DtpFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             TbxCliente.Text = "CONSUMIDOR FINAL";
-            this.ActiveControl = CbxArticulos;
 
             CargarCombo();
         }
@@ -41,26 +39,9 @@ namespace FacturacionABMC.Presentacion
             }
         }
 
-        private void ProximaFactura()
+        private void CargarFactura(int nroFactura)
         {
-            int next = gestor.ProximaFactura();
-            if (next > 0)
-                LblFactura.Text = "Factura Nº: " + next.ToString();
-            else
-                MessageBox.Show("Error de datos. No se puede obtener Nº de presupuesto!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        }
-
-        private void CargarArticulos()
-        {
-
-            DataTable dataTable = gestor.ConsultaSQL("SP_CONSULTAR_ARTICULOS");
-            if (dataTable != null)
-            {
-                CbxArticulos.DataSource = dataTable;
-                CbxArticulos.DisplayMember = "articulo";
-                CbxArticulos.ValueMember = "id_articulo";
-            }
+            
         }
 
         private void CalcularTotal()
@@ -69,17 +50,6 @@ namespace FacturacionABMC.Presentacion
             TbxTotal.Text = total.ToString();
         }
 
-        private void DgvDetalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (DgvDetalles.CurrentCell.ColumnIndex == 3 && DgvDetalles.Rows.Count > 0)
-            {
-                factura.QuitarDetalle(DgvDetalles.CurrentRow.Index);
-                //click button:
-                DgvDetalles.Rows.Remove(DgvDetalles.CurrentRow);
-                //presupuesto.quitarDetalle();
-                CalcularTotal();
-            }
-        }
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             if (TbxCliente.Text == "")
@@ -109,7 +79,7 @@ namespace FacturacionABMC.Presentacion
             factura.Cliente = TbxCliente.Text;
             factura.FormaPago = Convert.ToInt32(CbxFormaPago.SelectedValue);
             factura.Fecha = DtpFecha.Value;
-            if (gestor.ConfirmarFactura(factura))
+            if (gestor.ModificarFactura(factura))
             {
                 MessageBox.Show("Factura registrada", "Informe",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);

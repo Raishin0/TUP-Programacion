@@ -39,7 +39,7 @@ namespace FacturacionABMC.Datos
             SqlCommand cmd = new SqlCommand();
             cnn.Open();
             cmd.Connection = cnn;
-            cmd.CommandText = "SP_BORRAR_MAESTRO_DETALLE";
+            cmd.CommandText = "SP_DESACTIVAR_MAESTRO";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@factura_nro", nroFactura);
             afectadas = cmd.ExecuteNonQuery();
@@ -105,6 +105,45 @@ namespace FacturacionABMC.Datos
                     oDetalle.Cantidad);
                     cmdDet.ExecuteNonQuery();
                 }
+                t.Commit();
+            }
+            catch (Exception ex)
+            {
+                t.Rollback();
+                resultado = false;
+            }
+            finally
+            {
+                if (cnn != null && cnn.State == ConnectionState.Open)
+                    cnn.Close();
+            }
+            return resultado;
+        }
+
+        public bool ModificarFactura(Factura oFactura)
+        {
+
+            bool resultado = true;
+
+            SqlTransaction t = null;
+
+            try
+            {
+                cnn.Open();
+
+                t = cnn.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("SP_MODIFICAR_MAESTRO", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Transaction = t;
+
+                cmd.Parameters.AddWithValue("@cliente", oFactura.Cliente);
+                cmd.Parameters.AddWithValue("@forma_pago", oFactura.FormaPago);
+                cmd.Parameters.AddWithValue("@fecha", oFactura.Fecha);
+                SqlParameter param = new SqlParameter("@factura_nro",
+                SqlDbType.Int);
+                param.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(param);
+                cmd.ExecuteNonQuery();
                 t.Commit();
             }
             catch (Exception ex)
