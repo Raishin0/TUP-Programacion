@@ -1,0 +1,23 @@
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\bin\Debug\Actividad1-Facturacion.exe.config
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\bin\Debug\Actividad1-Facturacion.exe
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\bin\Debug\Actividad1-Facturacion.pdb
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.csproj.AssemblyReference.cache
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.csproj.SuggestedBindingRedirects.cache
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1_Facturacion.Properties.Resources.resources
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.csproj.GenerateResource.cache
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.csproj.CoreCompileInputs.cache
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.exe
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.pdb
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1_Facturacion.FrmNuevaFactura.resources
+D:\Mis documentos\FacuJuli21\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1_Facturacion.FrmPrincipal.resources
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\bin\Debug\Actividad1-Facturacion.exe.config
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\bin\Debug\Actividad1-Facturacion.exe
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\bin\Debug\Actividad1-Facturacion.pdb
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.csproj.AssemblyReference.cache
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1_Facturacion.FrmNuevaFactura.resources
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1_Facturacion.FrmPrincipal.resources
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1_Facturacion.Properties.Resources.resources
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.csproj.GenerateResource.cache
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.csproj.CoreCompileInputs.cache
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.exe
+C:\Users\ba\Documents\facultad\prog2\act1\Actividad1-Facturacion\obj\Debug\Actividad1-Facturacion.pdb
