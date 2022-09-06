@@ -30,12 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.DgvFacturas = new System.Windows.Forms.DataGridView();
+            this.BtnSalir = new System.Windows.Forms.Button();
             this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Acciones = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.BtnSalir = new System.Windows.Forms.Button();
+            this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,13 +60,25 @@
             this.Fecha,
             this.FormaPago,
             this.Cliente,
-            this.Acciones});
-            this.DgvFacturas.Location = new System.Drawing.Point(50, 63);
+            this.Borrar,
+            this.Modificar});
+            this.DgvFacturas.Location = new System.Drawing.Point(29, 63);
             this.DgvFacturas.Name = "DgvFacturas";
             this.DgvFacturas.ReadOnly = true;
-            this.DgvFacturas.Size = new System.Drawing.Size(700, 327);
+            this.DgvFacturas.Size = new System.Drawing.Size(743, 327);
             this.DgvFacturas.TabIndex = 1;
             this.DgvFacturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvFacturas_CellContentClick);
+            // 
+            // BtnSalir
+            // 
+            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSalir.Location = new System.Drawing.Point(363, 408);
+            this.BtnSalir.Name = "BtnSalir";
+            this.BtnSalir.Size = new System.Drawing.Size(75, 34);
+            this.BtnSalir.TabIndex = 2;
+            this.BtnSalir.Text = "Salir";
+            this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // NroFactura
             // 
@@ -93,27 +106,26 @@
             this.Cliente.ReadOnly = true;
             this.Cliente.Width = 200;
             // 
-            // Acciones
+            // Borrar
             // 
-            this.Acciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Acciones.HeaderText = "Acciones";
-            this.Acciones.Name = "Acciones";
-            this.Acciones.ReadOnly = true;
-            this.Acciones.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Acciones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Acciones.Text = "Eliminar";
-            this.Acciones.UseColumnTextForButtonValue = true;
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Borrar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Borrar.Text = "Borrar";
+            this.Borrar.UseColumnTextForButtonValue = true;
+            this.Borrar.Width = 75;
             // 
-            // BtnSalir
+            // Modificar
             // 
-            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir.Location = new System.Drawing.Point(363, 408);
-            this.BtnSalir.Name = "BtnSalir";
-            this.BtnSalir.Size = new System.Drawing.Size(75, 34);
-            this.BtnSalir.TabIndex = 2;
-            this.BtnSalir.Text = "Salir";
-            this.BtnSalir.UseVisualStyleBackColor = true;
-            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
+            this.Modificar.HeaderText = "Modificar";
+            this.Modificar.Name = "Modificar";
+            this.Modificar.ReadOnly = true;
+            this.Modificar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Modificar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Modificar.UseColumnTextForButtonValue = true;
+            this.Modificar.Width = 75;
             // 
             // FrmConsultarFacturas
             // 
@@ -140,6 +152,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn FormaPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
-        private System.Windows.Forms.DataGridViewButtonColumn Acciones;
+        private System.Windows.Forms.DataGridViewButtonColumn Borrar;
+        private System.Windows.Forms.DataGridViewButtonColumn Modificar;
     }
 }

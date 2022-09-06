@@ -56,6 +56,12 @@
     <Compile Include="Presentacion\FrmConsultarFacturas.Designer.cs">
       <DependentUpon>FrmConsultarFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\FrmModificarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FrmModificarFactura.Designer.cs">
+      <DependentUpon>FrmModificarFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Presentacion\FrmConsultarFacturas.resx">
       <DependentUpon>FrmConsultarFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\FrmModificarFactura.resx">
+      <DependentUpon>FrmModificarFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FrmNuevaFactura.resx">
       <DependentUpon>FrmNuevaFactura.cs</DependentUpon>

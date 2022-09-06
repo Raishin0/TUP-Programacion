@@ -42,6 +42,11 @@ namespace FacturacionABMC.Presentacion
             {
                 QuitarFactura((int)DgvFacturas.CurrentRow.Cells[0].Value);
             }
+
+            if (DgvFacturas.CurrentCell.ColumnIndex == 5)
+            {
+                QuitarFactura((int)DgvFacturas.CurrentRow.Cells[0].Value);
+            }
         }
 
         private void QuitarFactura(int nroFactura)

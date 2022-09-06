@@ -11,3 +11,15 @@ D:\Mis documentos\FacuJuli21\prog2\act2\FacturacionABMC\obj\Debug\FacturacionABM
 D:\Mis documentos\FacuJuli21\prog2\act2\FacturacionABMC\obj\Debug\FacturacionABMC.Presentacion.FrmConsultarFacturas.resources
 D:\Mis documentos\FacuJuli21\prog2\act2\FacturacionABMC\obj\Debug\FacturacionABMC.Presentacion.FrmNuevaFactura.resources
 D:\Mis documentos\FacuJuli21\prog2\act2\FacturacionABMC\obj\Debug\FacturacionABMC.Presentacion.FrmPrincipal.resources
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\bin\Debug\FacturacionABMC.exe.config
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\bin\Debug\FacturacionABMC.exe
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\bin\Debug\FacturacionABMC.pdb
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\obj\Debug\FacturacionABMC.csproj.AssemblyReference.cache
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\obj\Debug\FacturacionABMC.Presentacion.FrmConsultarFacturas.resources
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\obj\Debug\FacturacionABMC.Presentacion.FrmNuevaFactura.resources
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\obj\Debug\FacturacionABMC.Presentacion.FrmPrincipal.resources
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\obj\Debug\FacturacionABMC.Properties.Resources.resources
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\obj\Debug\FacturacionABMC.csproj.GenerateResource.cache
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\obj\Debug\FacturacionABMC.csproj.CoreCompileInputs.cache
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\obj\Debug\FacturacionABMC.exe
+C:\Users\ba\Documents\facultad\prog2\TUP-Programacion\FacturacionABMC\obj\Debug\FacturacionABMC.pdb
