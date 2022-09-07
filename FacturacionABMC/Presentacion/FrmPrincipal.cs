@@ -45,5 +45,21 @@ namespace FacturacionABMC.Presentacion
             }
         }
 
+        private void consultarArticulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultarArticulos frmConsultarArticulos = new FrmConsultarArticulos();
+            frmConsultarArticulos.Show();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consultarVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultarVentasArticulos frmConsultarVentasArticulos = new FrmConsultarVentasArticulos();
+            frmConsultarVentasArticulos.Show();
+        }
     }
 }

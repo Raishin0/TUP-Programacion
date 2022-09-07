@@ -27,7 +27,7 @@ namespace FacturacionABMC.Presentacion
             DataTable dataTable = gestor.ConsultaSQL("SP_CONSULTAR_MAESTRO");
             foreach(DataRow fila in dataTable.Rows)
             {
-                DgvFacturas.Rows.Add(new object[] { fila[0], fila[1], fila[2], fila[3] });
+                DgvFacturas.Rows.Add(new object[] { fila[0], fila[1], fila[2], fila[3], fila[4] });
             }
         }
 
@@ -38,17 +38,17 @@ namespace FacturacionABMC.Presentacion
 
         private void DgvFacturas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (DgvFacturas.CurrentCell.ColumnIndex == 4)
+            if (DgvFacturas.CurrentCell.ColumnIndex == 5)
             {
                 QuitarFactura((int)DgvFacturas.CurrentRow.Cells[0].Value);
             }
 
-            if (DgvFacturas.CurrentCell.ColumnIndex == 5)
+            if (DgvFacturas.CurrentCell.ColumnIndex == 6)
             {
                 ModificarFactura((int)DgvFacturas.CurrentRow.Cells[0].Value,
                     (DateTime)DgvFacturas.CurrentRow.Cells[1].Value, 
-                    (int)DgvFacturas.CurrentRow.Cells[2].Value,
-                    (string)DgvFacturas.CurrentRow.Cells[3].Value);
+                    (int)DgvFacturas.CurrentRow.Cells[3].Value,
+                    (string)DgvFacturas.CurrentRow.Cells[4].Value);
             }
         }
 
@@ -61,11 +61,13 @@ namespace FacturacionABMC.Presentacion
 
         private void QuitarFactura(int nroFactura)
         {
-            if(MessageBox.Show($"Seguro que quiere quitar la factura Nº{nroFactura}?",
+            List<Parametro> lst = new List<Parametro>();
+            lst.Add(new Parametro("@factura_nro", nroFactura));
+            if (MessageBox.Show($"Seguro que quiere quitar la factura Nº{nroFactura}?",
                 "Borrar",MessageBoxButtons.YesNo,MessageBoxIcon.Information) 
                 == DialogResult.Yes)
             {
-                if(gestor.EliminarFactura(nroFactura) >  0)
+                if(gestor.EjecutarSQL("SP_DESACTIVAR_MAESTRO", lst) >  0)
 
                 {
                     MessageBox.Show("Factura eliminada", "Informe",

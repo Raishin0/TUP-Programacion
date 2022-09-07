@@ -20,34 +20,45 @@ namespace FacturacionABMC.Presentacion
         {
             this.factura = factura;
 
-            CargarFactura();
-            DtpFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            TbxCliente.Text = "CONSUMIDOR FINAL";
+            InitializeComponent();
+        }
 
+        private void FrmModificarFactura_Load(object sender, EventArgs e)
+        {
             CargarCombo();
+            CargarFactura();
         }
 
         private void CargarCombo()
         {
-            DataTable dataTable = gestor.ConsultaSQL("SP_CONSULTAR_FORMAS_PAGO");
-            if (dataTable != null)
+            DataTable dataTableFP = gestor.ConsultaSQL("SP_CONSULTAR_FORMAS_PAGO");
+            if (dataTableFP != null)
             {
-                CbxFormaPago.DataSource = dataTable;
+                CbxFormaPago.DataSource = dataTableFP;
                 CbxFormaPago.DisplayMember = "forma_pago";
                 CbxFormaPago.ValueMember = "id_forma_pago";
                 CbxFormaPago.SelectedIndex = -1;
             }
         }
 
-        private void CargarFactura(int nroFactura)
+        private void CargarFactura()
         {
-            
-        }
-
-        private void CalcularTotal()
-        {
-            double total = factura.CalcularTotal();
-            TbxTotal.Text = total.ToString();
+            TbxCliente.Text = factura.Cliente;
+            CbxFormaPago.SelectedValue = factura.FormaPago;
+            DtpFecha.Value = factura.Fecha;
+            List<Parametro> lst = new List<Parametro>();
+            lst.Add(new Parametro("@factura_nro", factura.Codigo));
+            DataTable detalles = gestor.ConsultaSQL("SP_CONSULTAR_DETALLE", lst);
+            foreach (DataRow fila in detalles.Rows)
+            {
+                int cod = (int)fila[0];
+                string nom = fila[1].ToString();
+                int can = (int)fila[2];
+                double pre = double.Parse(fila[3].ToString());
+                Articulo articulo = new Articulo(cod, nom, pre);
+                factura.Detalles.Add(new Detalle(articulo, can));
+                DgvDetalles.Rows.Add(new object[] { (string)fila[1], (int)fila[2], double.Parse(fila[3].ToString()) });
+            }
         }
 
         private void BtnAceptar_Click(object sender, EventArgs e)
@@ -64,12 +75,6 @@ namespace FacturacionABMC.Presentacion
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            if (DgvDetalles.Rows.Count == 0)
-            {
-                MessageBox.Show("Debe ingresar al menos detalle!",
-                "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
             GuardarFactura();
         }
 
@@ -79,15 +84,21 @@ namespace FacturacionABMC.Presentacion
             factura.Cliente = TbxCliente.Text;
             factura.FormaPago = Convert.ToInt32(CbxFormaPago.SelectedValue);
             factura.Fecha = DtpFecha.Value;
-            if (gestor.ModificarFactura(factura))
+
+            List<Parametro> lst = new List<Parametro>();
+            lst.Add(new Parametro("@factura_nro", factura.Codigo));
+            lst.Add(new Parametro("@forma_pago", factura.FormaPago));
+            lst.Add(new Parametro("@fecha", factura.Fecha));
+            lst.Add(new Parametro("@cliente", factura.Cliente));
+            if (gestor.EjecutarSQL("SP_MODIFICAR_MAESTRO", lst) > 0)
             {
-                MessageBox.Show("Factura registrada", "Informe",
+                MessageBox.Show("Factura modificada", "Informe",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Dispose();
             }
             else
             {
-                MessageBox.Show("ERROR. No se pudo registrar la factura",
+                MessageBox.Show("ERROR. No se pudo modificar la factura",
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

@@ -30,13 +30,14 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.DgvFacturas = new System.Windows.Forms.DataGridView();
-            this.BtnSalir = new System.Windows.Forms.Button();
             this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDFormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.BtnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,6 +60,7 @@
             this.NroFactura,
             this.Fecha,
             this.FormaPago,
+            this.IDFormaPago,
             this.Cliente,
             this.Borrar,
             this.Modificar});
@@ -68,17 +70,6 @@
             this.DgvFacturas.Size = new System.Drawing.Size(743, 327);
             this.DgvFacturas.TabIndex = 1;
             this.DgvFacturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvFacturas_CellContentClick);
-            // 
-            // BtnSalir
-            // 
-            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir.Location = new System.Drawing.Point(363, 408);
-            this.BtnSalir.Name = "BtnSalir";
-            this.BtnSalir.Size = new System.Drawing.Size(75, 34);
-            this.BtnSalir.TabIndex = 2;
-            this.BtnSalir.Text = "Salir";
-            this.BtnSalir.UseVisualStyleBackColor = true;
-            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // NroFactura
             // 
@@ -98,6 +89,13 @@
             this.FormaPago.HeaderText = "Forma pago";
             this.FormaPago.Name = "FormaPago";
             this.FormaPago.ReadOnly = true;
+            // 
+            // IDFormaPago
+            // 
+            this.IDFormaPago.HeaderText = "IDFormaPago";
+            this.IDFormaPago.Name = "IDFormaPago";
+            this.IDFormaPago.ReadOnly = true;
+            this.IDFormaPago.Visible = false;
             // 
             // Cliente
             // 
@@ -124,8 +122,20 @@
             this.Modificar.ReadOnly = true;
             this.Modificar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Modificar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Modificar.Text = "Modificar";
             this.Modificar.UseColumnTextForButtonValue = true;
             this.Modificar.Width = 75;
+            // 
+            // BtnSalir
+            // 
+            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSalir.Location = new System.Drawing.Point(363, 408);
+            this.BtnSalir.Name = "BtnSalir";
+            this.BtnSalir.Size = new System.Drawing.Size(75, 34);
+            this.BtnSalir.TabIndex = 2;
+            this.BtnSalir.Text = "Salir";
+            this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // FrmConsultarFacturas
             // 
@@ -151,6 +161,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NroFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn FormaPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDFormaPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
         private System.Windows.Forms.DataGridViewButtonColumn Borrar;
         private System.Windows.Forms.DataGridViewButtonColumn Modificar;

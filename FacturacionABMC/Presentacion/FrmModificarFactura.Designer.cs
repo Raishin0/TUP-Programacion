@@ -29,15 +29,8 @@ namespace FacturacionABMC.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.TbxTotal = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnAceptar = new System.Windows.Forms.Button();
-            this.DgvDetalles = new System.Windows.Forms.DataGridView();
-            this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Accion = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CbxFormaPago = new System.Windows.Forms.ComboBox();
             this.DtpFecha = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,27 +38,15 @@ namespace FacturacionABMC.Presentacion
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.LblFactura = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TbxTotal = new System.Windows.Forms.TextBox();
+            this.DgvDetalles = new System.Windows.Forms.DataGridView();
+            this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Accion = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalles)).BeginInit();
             this.SuspendLayout();
-            // 
-            // TbxTotal
-            // 
-            this.TbxTotal.Enabled = false;
-            this.TbxTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbxTotal.Location = new System.Drawing.Point(423, 466);
-            this.TbxTotal.Name = "TbxTotal";
-            this.TbxTotal.Size = new System.Drawing.Size(102, 26);
-            this.TbxTotal.TabIndex = 32;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(368, 469);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 20);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Total";
             // 
             // BtnCancelar
             // 
@@ -87,54 +68,6 @@ namespace FacturacionABMC.Presentacion
             this.BtnAceptar.UseVisualStyleBackColor = true;
             this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
-            // DgvDetalles
-            // 
-            this.DgvDetalles.AllowUserToAddRows = false;
-            this.DgvDetalles.AllowUserToDeleteRows = false;
-            this.DgvDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvDetalles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Articulo,
-            this.Cantidad,
-            this.PrecioUnitario,
-            this.Accion});
-            this.DgvDetalles.Location = new System.Drawing.Point(42, 226);
-            this.DgvDetalles.Name = "DgvDetalles";
-            this.DgvDetalles.ReadOnly = true;
-            this.DgvDetalles.Size = new System.Drawing.Size(509, 224);
-            this.DgvDetalles.TabIndex = 28;
-            // 
-            // Articulo
-            // 
-            this.Articulo.Frozen = true;
-            this.Articulo.HeaderText = "Articulo";
-            this.Articulo.Name = "Articulo";
-            this.Articulo.ReadOnly = true;
-            this.Articulo.Width = 200;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.Frozen = true;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // PrecioUnitario
-            // 
-            this.PrecioUnitario.Frozen = true;
-            this.PrecioUnitario.HeaderText = "Precio Unitario";
-            this.PrecioUnitario.Name = "PrecioUnitario";
-            this.PrecioUnitario.ReadOnly = true;
-            // 
-            // Accion
-            // 
-            this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Accion.HeaderText = "Accion";
-            this.Accion.Name = "Accion";
-            this.Accion.ReadOnly = true;
-            this.Accion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Accion.Text = "Quitar";
-            this.Accion.UseColumnTextForButtonValue = true;
-            // 
             // CbxFormaPago
             // 
             this.CbxFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -146,7 +79,6 @@ namespace FacturacionABMC.Presentacion
             // 
             // DtpFecha
             // 
-            this.DtpFecha.Enabled = false;
             this.DtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DtpFecha.Location = new System.Drawing.Point(251, 91);
             this.DtpFecha.Name = "DtpFecha";
@@ -198,6 +130,74 @@ namespace FacturacionABMC.Presentacion
             this.LblFactura.TabIndex = 18;
             this.LblFactura.Text = "Modificar Factura Nº";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(368, 469);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 20);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Total";
+            // 
+            // TbxTotal
+            // 
+            this.TbxTotal.Enabled = false;
+            this.TbxTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbxTotal.Location = new System.Drawing.Point(423, 466);
+            this.TbxTotal.Name = "TbxTotal";
+            this.TbxTotal.Size = new System.Drawing.Size(102, 26);
+            this.TbxTotal.TabIndex = 32;
+            // 
+            // DgvDetalles
+            // 
+            this.DgvDetalles.AllowUserToAddRows = false;
+            this.DgvDetalles.AllowUserToDeleteRows = false;
+            this.DgvDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvDetalles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Articulo,
+            this.Cantidad,
+            this.PrecioUnitario,
+            this.Accion});
+            this.DgvDetalles.Location = new System.Drawing.Point(85, 226);
+            this.DgvDetalles.Name = "DgvDetalles";
+            this.DgvDetalles.ReadOnly = true;
+            this.DgvDetalles.Size = new System.Drawing.Size(441, 224);
+            this.DgvDetalles.TabIndex = 28;
+            // 
+            // Articulo
+            // 
+            this.Articulo.Frozen = true;
+            this.Articulo.HeaderText = "Articulo";
+            this.Articulo.Name = "Articulo";
+            this.Articulo.ReadOnly = true;
+            this.Articulo.Width = 200;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.Frozen = true;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // PrecioUnitario
+            // 
+            this.PrecioUnitario.Frozen = true;
+            this.PrecioUnitario.HeaderText = "Precio Unitario";
+            this.PrecioUnitario.Name = "PrecioUnitario";
+            this.PrecioUnitario.ReadOnly = true;
+            // 
+            // Accion
+            // 
+            this.Accion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Accion.HeaderText = "Accion";
+            this.Accion.Name = "Accion";
+            this.Accion.ReadOnly = true;
+            this.Accion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Accion.Text = "Quitar";
+            this.Accion.UseColumnTextForButtonValue = true;
+            this.Accion.Visible = false;
+            // 
             // FrmModificarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,6 +217,7 @@ namespace FacturacionABMC.Presentacion
             this.Controls.Add(this.LblFactura);
             this.Name = "FrmModificarFactura";
             this.Text = "FrmModificarFactura";
+            this.Load += new System.EventHandler(this.FrmModificarFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -224,16 +225,8 @@ namespace FacturacionABMC.Presentacion
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox TbxTotal;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnAceptar;
-        private System.Windows.Forms.DataGridView DgvDetalles;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
-        private System.Windows.Forms.DataGridViewButtonColumn Accion;
         private System.Windows.Forms.ComboBox CbxFormaPago;
         private System.Windows.Forms.DateTimePicker DtpFecha;
         private System.Windows.Forms.Label label4;
@@ -241,5 +234,12 @@ namespace FacturacionABMC.Presentacion
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LblFactura;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox TbxTotal;
+        private System.Windows.Forms.DataGridView DgvDetalles;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
+        private System.Windows.Forms.DataGridViewButtonColumn Accion;
     }
 }
