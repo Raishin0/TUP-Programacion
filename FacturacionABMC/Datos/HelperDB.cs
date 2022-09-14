@@ -12,10 +12,18 @@ namespace FacturacionABMC.Datos
     public class HelperDB
     {
         private SqlConnection cnn;
+        private static HelperDB helperDB;
 
-        public HelperDB()
+        private HelperDB()
         {
             cnn = new SqlConnection(Properties.Resources.cnnString);
+        }
+
+        public static HelperDB ObtenerInstancia()
+        {
+            if (helperDB == null)
+                helperDB = new HelperDB();
+            return helperDB ;
         }
 
         public DataTable ConsultaSQL(string strSql)

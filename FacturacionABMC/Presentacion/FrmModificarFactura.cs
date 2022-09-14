@@ -14,7 +14,7 @@ namespace FacturacionABMC.Presentacion
 {
     public partial class FrmModificarFactura : Form
     {
-        HelperDB gestor = new HelperDB();
+        HelperDB gestor = HelperDB.ObtenerInstancia();
         Factura factura;
         public FrmModificarFactura(Factura factura)
         {

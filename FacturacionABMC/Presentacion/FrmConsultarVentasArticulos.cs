@@ -14,7 +14,7 @@ namespace FacturacionABMC.Presentacion
 {
     public partial class FrmConsultarVentasArticulos : Form
     {
-        HelperDB gestor = new HelperDB();
+        HelperDB gestor = HelperDB.ObtenerInstancia();
         public FrmConsultarVentasArticulos()
         {
             InitializeComponent();

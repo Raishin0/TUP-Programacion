@@ -14,17 +14,21 @@ namespace FacturacionABMC.Presentacion
 {
     public partial class FrmConsultarFacturas : Form
     {
-        HelperDB gestor = new HelperDB();
+        HelperDB gestor = HelperDB.ObtenerInstancia();
 
         public FrmConsultarFacturas()
         {
             InitializeComponent();
-            CargarFacturas();
         }
 
         private void CargarFacturas()
         {
-            DataTable dataTable = gestor.ConsultaSQL("SP_CONSULTAR_MAESTRO");
+            List<Parametro> parametros = new List<Parametro>();
+            parametros.Add(new Parametro("@fecha_1", DtpPrimeraFecha.Value));
+            parametros.Add(new Parametro("@fecha_2", DtpUltimaFecha.Value));
+            parametros.Add(new Parametro("@cliente", TbxCliente.Text));
+            DataTable dataTable = gestor.ConsultaSQL("SP_CONSULTAR_MAESTRO",parametros);
+            DgvFacturas.Rows.Clear();
             foreach(DataRow fila in dataTable.Rows)
             {
                 DgvFacturas.Rows.Add(new object[] { fila[0], fila[1], fila[2], fila[3], fila[4] });
@@ -80,6 +84,17 @@ namespace FacturacionABMC.Presentacion
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void FrmConsultarFacturas_Load(object sender, EventArgs e)
+        {
+            DtpPrimeraFecha.Format = DateTimePickerFormat.Short;
+            DtpUltimaFecha.Format = DateTimePickerFormat.Short;
+        }
+
+        private void BtnGenerar_Click(object sender, EventArgs e)
+        {
+            CargarFacturas();
         }
     }
 }
