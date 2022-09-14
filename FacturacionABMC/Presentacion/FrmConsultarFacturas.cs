@@ -90,7 +90,7 @@ namespace FacturacionABMC.Presentacion
         {
             DtpPrimeraFecha.Format = DateTimePickerFormat.Short;
             DtpUltimaFecha.Format = DateTimePickerFormat.Short;
-            DtpPrimeraFecha.Value = DateTime.Today;
+            DtpUltimaFecha.Value = DateTime.Today;
         }
 
         private void BtnGenerar_Click(object sender, EventArgs e)
