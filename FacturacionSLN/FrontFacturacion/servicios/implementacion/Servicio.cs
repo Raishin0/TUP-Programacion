@@ -1,63 +1,60 @@
-﻿using FrontCarpinteria.servicios.interfaz;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CarpinteriaApp.datos.Interfaz;
-using CarpinteriaApp.datos.Implementacion;
-using CarpinteriaApp.dominio;
+using FrontFacturacion.servicios.interfaz;
+using DataApi.datos.Implementacion;
+using DataApi.datos.Interfaz;
+using DataApi.dominio;
+using Newtonsoft.Json;
 
-namespace FrontCarpinteria.servicios.implementacion
+namespace FrontFacturacion.servicios.implementacion
 {
     public class Servicio : IServicio
     {
-        private IDaoPresupuesto dao;
+        private IDaoFactura dao;
 
         public Servicio()
         {
-            dao = new PresupuestoDao();
+            dao = new DaoFactura();
         }
 
-        public bool ActualizarPresupuesto(Presupuesto presupuesto)
+        public async Task<List<Articulo>> ObtenerArticulos()
         {
-            return dao.Actualizar(presupuesto);
+            string url = "http://localhost:5031/productos";
+            var data = await ClienteSingleton.GetInstance().GetAsync(url);
+            List<Articulo> lst = JsonConvert.DeserializeObject<List<Articulo>>(data);
+            return lst;
         }
-
-        public bool BorrarPresupuesto(int nro)
+        public int ObtenerProximoNro()
+        {
+            return dao.ObtenerProximoNro();
+        }
+        public bool Crear(Factura oFactura)
+        {
+            return dao.Crear(oFactura);
+        }
+        public bool Actualizar(Factura oFactura)
+        {
+            return dao.Actualizar(oFactura);
+        }
+        public bool Borrar(int nro)
         {
             return dao.Borrar(nro);
         }
-
-        public bool CrearPresupuesto(Presupuesto presupuesto)
+        public List<Factura> ObtenerFacturasPorFiltros(DateTime desde, DateTime hasta, string cliente)
         {
-            return dao.Crear(presupuesto);
+            return dao.ObtenerFacturasPorFiltros(desde, hasta, cliente);
         }
-
-        public Presupuesto ObtenerPresupuestoPorNro(int nro)
+        public Factura ObtenerFacturaPorNro(int nro)
         {
-            return dao.ObtenerPresupuestoPorNro(nro);
+            return dao.ObtenerFacturaPorNro(nro);
         }
-
-        public List<Presupuesto> ObtenerPresupuestos(DateTime desde, DateTime hasta, string cliente)
-        {
-            return dao.ObtenerPresupuestosPorFiltros(desde, hasta, cliente);
-        }
-
-        public List<Producto> ObtenerProductos()
-        {
-            return dao.ObtenerProductos();
-        }
-
-        public DataTable ObtenerReporteProductos(DateTime desde, DateTime hasta)
+        public DataTable ObtenerReporte(DateTime desde, DateTime hasta)
         {
             return dao.ObtenerReporte(desde, hasta);
-        }
-
-        public int ProximoPresupuesto()
-        {
-            return dao.ObtenerProximoNro();
         }
     }
 }

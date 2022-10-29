@@ -10,30 +10,41 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using DataApi.datos;
 using DataApi.dominio;
+using FrontCarpinteria.servicios.implementacion;
+using FrontFacturacion.servicios;
+using Newtonsoft.Json;
 
 namespace FrontFacturacion.formularios
 {
     public partial class FrmNuevaFactura : Form
     {
-        HelperDB gestor = HelperDB.ObtenerInstancia();
         Factura factura;
-        public FrmNuevaFactura()
+        public FrmNuevaFactura(FabricaServicio fabrica)
         {
             InitializeComponent();
         }
 
-        private void FrmNuevaFactura_Load(object sender, EventArgs e)
+        private async void FrmNuevaFactura_Load(object sender, EventArgs e)
         {
             factura = new Factura();
-            CargarArticulos();
 
+            await CargarProductosAsync();
             ProximaFactura();
             DtpFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             TbxCliente.Text = "CONSUMIDOR FINAL";
-            this.ActiveControl = CbxArticulos;
-
-            CargarCombo();
+            this.ActiveControl = CbxArticulos; // Set foco al combo
         }
+
+        private async Task CargarProductosAsync()
+        {
+            string url = "http://localhost:5031/productos";
+            var data = await ClienteSingleton.GetInstance().GetAsync(url);
+            List<Articulo> lst = JsonConvert.DeserializeObject<List<Articulo>>(data);
+            CbxArticulos.DataSource = lst;
+            CbxArticulos.DisplayMember = "articulo";
+            CbxArticulos.ValueMember = "id_articulo";
+        }
+
 
         private void CargarCombo()
         {

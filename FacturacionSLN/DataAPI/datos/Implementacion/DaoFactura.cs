@@ -114,25 +114,23 @@ namespace DataApi.datos.Implementacion
                 cmd.Transaction = t;
                 cmd.CommandText = "SP_MODIFICAR_MAESTRO";
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@factura_nro", oFactura.Codigo);
                 cmd.Parameters.AddWithValue("@cliente", oFactura.Cliente);
                 cmd.Parameters.AddWithValue("@fecha", oFactura.Fecha);
                 cmd.Parameters.AddWithValue("@forma_pago", oFactura.FormaPago);
                 cmd.ExecuteNonQuery();
 
-                //SqlCommand cmdDetalle;
-                //int detalleNro = 1;
-                //foreach (DetallePresupuesto item in oFactura.Detalles)
-                //{
-                //    cmdDetalle = new SqlCommand("SP_INSERTAR_DETALLE", cnn, t);
-                //    cmdDetalle.CommandType = CommandType.StoredProcedure;
-                //    cmdDetalle.Parameters.AddWithValue("@presupuesto_nro", oFactura.PresupuestoNro);
-                //    cmdDetalle.Parameters.AddWithValue("@detalle", detalleNro);
-                //    cmdDetalle.Parameters.AddWithValue("@id_producto", item.Producto.ProductoNro);
-                //    cmdDetalle.Parameters.AddWithValue("@cantidad", item.Cantidad);
-                //    cmdDetalle.ExecuteNonQuery();
+                SqlCommand cmdDetalle;
+                foreach (Detalle item in oFactura.Detalles)
+                {
+                    cmdDetalle = new SqlCommand("SP_INSERTAR_DETALLE", cnn, t);
+                    cmdDetalle.CommandType = CommandType.StoredProcedure;
+                    cmdDetalle.Parameters.AddWithValue("@factura_nro", oFactura.Codigo);
+                    cmdDetalle.Parameters.AddWithValue("@id_articulo", item.Articulo.Codigo);
+                    cmdDetalle.Parameters.AddWithValue("@cantidad", item.Cantidad);
+                    cmdDetalle.ExecuteNonQuery();
 
-                //    detalleNro++;
-                //}
+                }
                 t.Commit();
             }
 
@@ -174,7 +172,7 @@ namespace DataApi.datos.Implementacion
             foreach (DataRow row in dt.Rows)
             {
                 Factura factura = new Factura();
-                factura.Codigo = int.Parse(row["id_forma_pago"].ToString());
+                factura.Codigo = int.Parse(row["factura_nro"].ToString());
                 factura.Cliente = row["cliente"].ToString();
                 factura.FormaPago = int.Parse(row["id_forma_pago"].ToString());
                 factura.Fecha = DateTime.Parse(row["fecha"].ToString());
@@ -197,6 +195,7 @@ namespace DataApi.datos.Implementacion
         public Factura ObtenerFacturaPorNro(int nro)
         {
             Factura factura = new Factura();
+            factura.Codigo = nro;
             string sp = "SP_CONSULTAR_MAESTRO_DETALLE";
             List<Parametro> lst = new List<Parametro>();
             lst.Add(new Parametro("@factura_nro", nro));
