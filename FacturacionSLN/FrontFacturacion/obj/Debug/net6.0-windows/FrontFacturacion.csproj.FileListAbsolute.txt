@@ -1,0 +1,15 @@
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.csproj.AssemblyReference.cache
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.GeneratedMSBuildEditorConfig.editorconfig
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.AssemblyInfoInputs.cache
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.AssemblyInfo.cs
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.csproj.CoreCompileInputs.cache
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\bin\Debug\net6.0-windows\FrontFacturacion.exe
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\bin\Debug\net6.0-windows\FrontFacturacion.deps.json
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\bin\Debug\net6.0-windows\FrontFacturacion.runtimeconfig.json
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\bin\Debug\net6.0-windows\FrontFacturacion.dll
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\bin\Debug\net6.0-windows\FrontFacturacion.pdb
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.dll
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\refint\FrontFacturacion.dll
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.pdb
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.genruntimeconfig.cache
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\ref\FrontFacturacion.dll
