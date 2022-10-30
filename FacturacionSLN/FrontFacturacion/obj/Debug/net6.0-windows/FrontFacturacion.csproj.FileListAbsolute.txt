@@ -77,3 +77,4 @@ D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturac
 D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.formularios.FrmDetallesFactura.resources
 D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.formularios.FrmConsultarArticulos.resources
 D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.formularios.FrmReporteVentas.resources
+D:\Mis documentos\FacuJuli21\prog2\TUP-Programacion\FacturacionSLN\FrontFacturacion\obj\Debug\net6.0-windows\FrontFacturacion.formularios.FrmLogin.resources

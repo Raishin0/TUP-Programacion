@@ -12,6 +12,49 @@ namespace DataApi.datos.Implementacion
 {
     public class DaoFactura : IDaoFactura
     {
+        public int Login(string nombre, string contrasenia)
+        {
+            int correcto = -1;
+            SqlConnection cnn = HelperDB.ObtenerInstancia().ObtenerConexion();
+            SqlTransaction t = null;
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cnn.Open();
+                t = cnn.BeginTransaction();
+                cmd.Connection = cnn;
+                cmd.Transaction = t;
+                cmd.CommandText = "SP_LOGIN";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@contraseña", contrasenia);
+
+                //parámetro de salida:
+                SqlParameter pOut = new SqlParameter();
+                pOut.ParameterName = "@correcto";
+                pOut.DbType = DbType.Int32;
+                pOut.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(pOut);
+                cmd.ExecuteNonQuery();
+
+                correcto = (int)pOut.Value;
+
+                t.Commit();
+            }
+            catch (Exception)
+            {
+                if (t != null)
+                    t.Rollback();
+            }
+
+            finally
+            {
+                if (cnn != null && cnn.State == ConnectionState.Open)
+                    cnn.Close();
+            }
+            return correcto;
+        }
         public int ObtenerProximoNro()
         {
             string sp = "SP_PROXIMO_ID";

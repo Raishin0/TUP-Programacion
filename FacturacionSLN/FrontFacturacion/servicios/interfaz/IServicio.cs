@@ -10,6 +10,7 @@ namespace FrontFacturacion.servicios.interfaz
 {
     public interface IServicio
     {
+        int Login(string nombre, string contrasenia);
         List<Articulo> ObtenerArticulos();
         Dictionary<int, string> ObtenerFormasPago();
         int ObtenerProximoNro();

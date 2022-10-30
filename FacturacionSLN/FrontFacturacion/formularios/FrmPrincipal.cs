@@ -20,6 +20,15 @@ namespace FrontFacturacion.formularios
             this.fabrica = fabrica;
             InitializeComponent();
         }
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            Login();
+        }
+
+        private void Login()
+        {
+            new FrmLogin(fabrica).ShowDialog();
+        }
 
         private void MenuArchivo_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -54,10 +63,6 @@ namespace FrontFacturacion.formularios
             frmConsultarArticulos.Show();
         }
 
-        private void FrmPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void consultarVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {

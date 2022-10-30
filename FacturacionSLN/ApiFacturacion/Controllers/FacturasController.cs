@@ -21,6 +21,22 @@ namespace ApiFacturacion.Controllers
             dataApi = new DataApiImp();
         }
 
+        [HttpGet("/login")]
+        public IActionResult GetArticulos(string nombre, string contrasenia)
+        {
+
+            int correcto = -1;
+            try
+            {
+                correcto = dataApi.Login(nombre,contrasenia);
+                return Ok(correcto);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error interno! Intente luego");
+            }
+        }
         [HttpGet("/articulos")]
         public IActionResult GetArticulos()
         {

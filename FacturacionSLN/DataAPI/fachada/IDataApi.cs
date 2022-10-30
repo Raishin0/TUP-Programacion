@@ -10,6 +10,7 @@ namespace DataAPI.fachada
 {
     public interface IDataApi
     {
+        int Login(string nombre, string contrasenia);
         List<Articulo> ObtenerArticulos();
         Dictionary<int, string> ObtenerFormasPago();
         int ObtenerProximoNro();

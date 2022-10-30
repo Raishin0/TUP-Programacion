@@ -21,6 +21,11 @@ namespace FrontFacturacion.servicios.implementacion
             dao = new DaoFactura();
         }
 
+        public int Login(string nombre, string contrasenia)
+        {
+            return dao.Login(nombre, contrasenia);
+        }
+
         public List<Articulo> ObtenerArticulos()
         {
             return dao.ObtenerArticulos();
