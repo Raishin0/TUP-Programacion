@@ -21,7 +21,7 @@ namespace ApiFacturacion.Controllers
             dataApi = new DataApiImp();
         }
 
-        [HttpGet("/articlos")]
+        [HttpGet("/articulos")]
         public IActionResult GetArticulos()
         {
 
@@ -37,6 +37,41 @@ namespace ApiFacturacion.Controllers
                 return StatusCode(500, "Error interno! Intente luego");
             }
         }
+
+        [HttpGet("/formasDePago")]
+        public IActionResult GetFormasPago()
+        {
+
+            Dictionary<int,string> lst = null;
+            try
+            {
+                lst = dataApi.ObtenerFormasPago();
+                return Ok(lst);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error interno! Intente luego");
+            }
+        }
+
+        [HttpGet("/proximoNro")]
+        public IActionResult GetProximoNro()
+        {
+
+            int nro = -1;
+            try
+            {
+                nro = dataApi.ObtenerProximoNro();
+                return Ok(nro);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error interno! Intente luego");
+            }
+        }
+
 
         [HttpGet("/facturas")]
         public IActionResult GetFacturas(string inicio, string final, string? cliente="")
@@ -108,7 +143,7 @@ namespace ApiFacturacion.Controllers
         }
 
         // PUT api/<FacturasController>/5
-        [HttpPut]
+        [HttpPut("/factura")]
         public IActionResult Put(Factura oFactura)
         {
 
@@ -128,13 +163,11 @@ namespace ApiFacturacion.Controllers
         }
 
         // DELETE api/<FacturasController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("/factura/{id}")]
         public IActionResult Delete(int id)
         {
-
             try
             {
-
                 return Ok(dataApi.Borrar(id));
             }
             catch (Exception ex)

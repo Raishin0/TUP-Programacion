@@ -17,6 +17,24 @@ namespace DataApi.datos.Implementacion
             string sp = "SP_PROXIMO_ID";
             return HelperDB.ObtenerInstancia().ConsultaEscalarSQL(sp, "@next");
         }
+        public Dictionary<int, string> ObtenerFormasPago()
+        {
+            Dictionary<int, string> lst = new Dictionary<int, string>();
+
+            string sp = "SP_CONSULTAR_FORMAS_PAGO";
+            DataTable t = HelperDB.ObtenerInstancia().ConsultaSQL(sp, null);
+
+            foreach (DataRow dr in t.Rows)
+            {
+                //Mapear un registro a un objeto del modelo de dominio
+                int nro = int.Parse(dr["id_forma_pago"].ToString());
+                string nombre = dr["forma_pago"].ToString();
+
+                lst.Add(nro,nombre);
+            }
+
+            return lst;
+        }
 
         public List<Articulo> ObtenerArticulos()
         {

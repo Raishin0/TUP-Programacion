@@ -30,7 +30,6 @@ namespace FrontFacturacion.formularios
         private void InitializeComponent()
         {
             this.BtnCancelar = new System.Windows.Forms.Button();
-            this.BtnAceptar = new System.Windows.Forms.Button();
             this.CbxFormaPago = new System.Windows.Forms.ComboBox();
             this.DtpFecha = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,86 +44,88 @@ namespace FrontFacturacion.formularios
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Accion = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.BtnAgregar = new System.Windows.Forms.Button();
+            this.TbxCantidad = new System.Windows.Forms.TextBox();
+            this.CbxArticulos = new System.Windows.Forms.ComboBox();
+            this.BtnAceptar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalles)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(166, 469);
+            this.BtnCancelar.Location = new System.Drawing.Point(148, 538);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.BtnCancelar.Size = new System.Drawing.Size(88, 27);
             this.BtnCancelar.TabIndex = 30;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
-            // BtnAceptar
-            // 
-            this.BtnAceptar.Location = new System.Drawing.Point(85, 469);
-            this.BtnAceptar.Name = "BtnAceptar";
-            this.BtnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAceptar.TabIndex = 29;
-            this.BtnAceptar.Text = "Aceptar";
-            this.BtnAceptar.UseVisualStyleBackColor = true;
-            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
-            // 
             // CbxFormaPago
             // 
             this.CbxFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbxFormaPago.FormattingEnabled = true;
-            this.CbxFormaPago.Location = new System.Drawing.Point(251, 176);
+            this.CbxFormaPago.Location = new System.Drawing.Point(293, 203);
+            this.CbxFormaPago.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CbxFormaPago.Name = "CbxFormaPago";
-            this.CbxFormaPago.Size = new System.Drawing.Size(121, 21);
+            this.CbxFormaPago.Size = new System.Drawing.Size(140, 23);
             this.CbxFormaPago.TabIndex = 24;
             // 
             // DtpFecha
             // 
             this.DtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpFecha.Location = new System.Drawing.Point(251, 91);
+            this.DtpFecha.Location = new System.Drawing.Point(293, 105);
+            this.DtpFecha.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DtpFecha.Name = "DtpFecha";
-            this.DtpFecha.Size = new System.Drawing.Size(118, 20);
+            this.DtpFecha.Size = new System.Drawing.Size(137, 23);
             this.DtpFecha.TabIndex = 23;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(169, 180);
+            this.label4.Location = new System.Drawing.Point(197, 208);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.Size = new System.Drawing.Size(87, 15);
             this.label4.TabIndex = 22;
             this.label4.Text = "Forma de pago";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // TbxCliente
             // 
-            this.TbxCliente.Location = new System.Drawing.Point(251, 132);
+            this.TbxCliente.Location = new System.Drawing.Point(293, 152);
+            this.TbxCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TbxCliente.Name = "TbxCliente";
-            this.TbxCliente.Size = new System.Drawing.Size(121, 20);
+            this.TbxCliente.Size = new System.Drawing.Size(140, 23);
             this.TbxCliente.TabIndex = 21;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(208, 136);
+            this.label3.Location = new System.Drawing.Point(243, 157);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.Size = new System.Drawing.Size(44, 15);
             this.label3.TabIndex = 20;
             this.label3.Text = "Cliente";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(210, 95);
+            this.label2.Location = new System.Drawing.Point(245, 110);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 19;
             this.label2.Text = "Fecha";
             // 
             // LblFactura
             // 
             this.LblFactura.AutoSize = true;
-            this.LblFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblFactura.Location = new System.Drawing.Point(166, 31);
+            this.LblFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblFactura.Location = new System.Drawing.Point(194, 36);
+            this.LblFactura.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblFactura.Name = "LblFactura";
             this.LblFactura.Size = new System.Drawing.Size(281, 31);
             this.LblFactura.TabIndex = 18;
@@ -133,8 +134,9 @@ namespace FrontFacturacion.formularios
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(368, 469);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(429, 541);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 20);
             this.label6.TabIndex = 31;
@@ -143,10 +145,11 @@ namespace FrontFacturacion.formularios
             // TbxTotal
             // 
             this.TbxTotal.Enabled = false;
-            this.TbxTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbxTotal.Location = new System.Drawing.Point(423, 466);
+            this.TbxTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TbxTotal.Location = new System.Drawing.Point(493, 538);
+            this.TbxTotal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TbxTotal.Name = "TbxTotal";
-            this.TbxTotal.Size = new System.Drawing.Size(102, 26);
+            this.TbxTotal.Size = new System.Drawing.Size(118, 26);
             this.TbxTotal.TabIndex = 32;
             // 
             // DgvDetalles
@@ -159,11 +162,12 @@ namespace FrontFacturacion.formularios
             this.Cantidad,
             this.PrecioUnitario,
             this.Accion});
-            this.DgvDetalles.Location = new System.Drawing.Point(85, 226);
+            this.DgvDetalles.Location = new System.Drawing.Point(60, 281);
+            this.DgvDetalles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DgvDetalles.Name = "DgvDetalles";
             this.DgvDetalles.ReadOnly = true;
-            this.DgvDetalles.Size = new System.Drawing.Size(441, 224);
-            this.DgvDetalles.TabIndex = 28;
+            this.DgvDetalles.Size = new System.Drawing.Size(594, 218);
+            this.DgvDetalles.TabIndex = 36;
             // 
             // Articulo
             // 
@@ -196,18 +200,59 @@ namespace FrontFacturacion.formularios
             this.Accion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Accion.Text = "Quitar";
             this.Accion.UseColumnTextForButtonValue = true;
-            this.Accion.Visible = false;
+            // 
+            // BtnAgregar
+            // 
+            this.BtnAgregar.Location = new System.Drawing.Point(490, 250);
+            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.BtnAgregar.Name = "BtnAgregar";
+            this.BtnAgregar.Size = new System.Drawing.Size(88, 25);
+            this.BtnAgregar.TabIndex = 35;
+            this.BtnAgregar.Text = "Agregar";
+            this.BtnAgregar.UseVisualStyleBackColor = true;
+            // 
+            // TbxCantidad
+            // 
+            this.TbxCantidad.Location = new System.Drawing.Point(367, 251);
+            this.TbxCantidad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.TbxCantidad.Name = "TbxCantidad";
+            this.TbxCantidad.Size = new System.Drawing.Size(115, 23);
+            this.TbxCantidad.TabIndex = 34;
+            // 
+            // CbxArticulos
+            // 
+            this.CbxArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxArticulos.FormattingEnabled = true;
+            this.CbxArticulos.Location = new System.Drawing.Point(135, 251);
+            this.CbxArticulos.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.CbxArticulos.Name = "CbxArticulos";
+            this.CbxArticulos.Size = new System.Drawing.Size(223, 23);
+            this.CbxArticulos.TabIndex = 33;
+            // 
+            // BtnAceptar
+            // 
+            this.BtnAceptar.Location = new System.Drawing.Point(52, 538);
+            this.BtnAceptar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.BtnAceptar.Name = "BtnAceptar";
+            this.BtnAceptar.Size = new System.Drawing.Size(88, 27);
+            this.BtnAceptar.TabIndex = 37;
+            this.BtnAceptar.Text = "Aceptar";
+            this.BtnAceptar.UseVisualStyleBackColor = true;
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
             // 
             // FrmModificarFactura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 514);
+            this.ClientSize = new System.Drawing.Size(692, 593);
+            this.Controls.Add(this.BtnAceptar);
+            this.Controls.Add(this.DgvDetalles);
+            this.Controls.Add(this.BtnAgregar);
+            this.Controls.Add(this.TbxCantidad);
+            this.Controls.Add(this.CbxArticulos);
             this.Controls.Add(this.TbxTotal);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.BtnCancelar);
-            this.Controls.Add(this.BtnAceptar);
-            this.Controls.Add(this.DgvDetalles);
             this.Controls.Add(this.CbxFormaPago);
             this.Controls.Add(this.DtpFecha);
             this.Controls.Add(this.label4);
@@ -215,9 +260,10 @@ namespace FrontFacturacion.formularios
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.LblFactura);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmModificarFactura";
             this.Text = "FrmModificarFactura";
-            this.Load += new System.EventHandler(this.FrmModificarFactura_Load);
+            this.Load += new System.EventHandler(this.FrmModificarFactura_LoadAsync);
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -226,7 +272,6 @@ namespace FrontFacturacion.formularios
 
         #endregion
         private System.Windows.Forms.Button BtnCancelar;
-        private System.Windows.Forms.Button BtnAceptar;
         private System.Windows.Forms.ComboBox CbxFormaPago;
         private System.Windows.Forms.DateTimePicker DtpFecha;
         private System.Windows.Forms.Label label4;
@@ -236,10 +281,14 @@ namespace FrontFacturacion.formularios
         private System.Windows.Forms.Label LblFactura;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TbxTotal;
-        private System.Windows.Forms.DataGridView DgvDetalles;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioUnitario;
-        private System.Windows.Forms.DataGridViewButtonColumn Accion;
+        private DataGridView DgvDetalles;
+        private DataGridViewTextBoxColumn Articulo;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn PrecioUnitario;
+        private DataGridViewButtonColumn Accion;
+        private Button BtnAgregar;
+        private TextBox TbxCantidad;
+        private ComboBox CbxArticulos;
+        private Button BtnAceptar;
     }
 }

@@ -153,7 +153,7 @@
           }
         }
       },
-      "Microsoft.SqlServer.Types/14.0.314.76": {
+      "Microsoft.SqlServer.Types/14.0.1016.290": {
         "type": "package",
         "compile": {
           "lib/net40/Microsoft.SqlServer.Types.dll": {}
@@ -407,10 +407,10 @@
         "microsoft.reportingservices.reportviewercontrol.winforms.nuspec"
       ]
     },
-    "Microsoft.SqlServer.Types/14.0.314.76": {
-      "sha512": "gAekCmSfjtRBaiuuRIqJJV6cfEsEbYY5vI7Ssoc5sYI04JcyPrZ4C8RC3z7K9xfpr9ejQAQ1AtfvtgqEnjmwOw==",
+    "Microsoft.SqlServer.Types/14.0.1016.290": {
+      "sha512": "isHCxuC16Tsgp7YfuagLRHEoFfJs0ibc0xBlSuU0yqUB9BeKRVxTU4CbsWfzsaW67I7LG5XLW4UCZFbVktmEuA==",
       "type": "package",
-      "path": "microsoft.sqlserver.types/14.0.314.76",
+      "path": "microsoft.sqlserver.types/14.0.1016.290",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -419,7 +419,7 @@
         "content/SqlServerTypes/readme.htm",
         "lib/net40/Microsoft.SqlServer.Types.dll",
         "license/license_SysClrTypes.rtf",
-        "microsoft.sqlserver.types.14.0.314.76.nupkg.sha512",
+        "microsoft.sqlserver.types.14.0.1016.290.nupkg.sha512",
         "microsoft.sqlserver.types.nuspec",
         "nativeBinaries/x64/SqlServerSpatial140.dll",
         "nativeBinaries/x64/msvcr120.dll",
@@ -762,6 +762,7 @@
     "net6.0-windows7.0": [
       "DataAPI >= 1.0.0",
       "Microsoft.ReportingServices.ReportViewerControl.Winforms >= 150.1537.0",
+      "Microsoft.SqlServer.Types >= 14.0.1016.290",
       "Newtonsoft.Json >= 13.0.1"
     ]
   },
@@ -812,6 +813,10 @@
             "target": "Package",
             "version": "[150.1537.0, )"
           },
+          "Microsoft.SqlServer.Types": {
+            "target": "Package",
+            "version": "[14.0.1016.290, )"
+          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
@@ -842,16 +847,6 @@
   },
   "logs": [
     {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Microsoft.ReportingServices.ReportViewerControl.Winforms 150.1537.0 depende de Microsoft.SqlServer.Types (>= 14.0.0), pero no se encontró Microsoft.SqlServer.Types 14.0.0. Se resolvió una mejor coincidencia aproximada de Microsoft.SqlServer.Types 14.0.314.76.",
-      "libraryId": "Microsoft.SqlServer.Types",
-      "targetGraphs": [
-        "net6.0-windows7.0"
-      ]
-    },
-    {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
@@ -865,7 +860,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"Microsoft.SqlServer.Types 14.0.314.76\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "El paquete \"Microsoft.SqlServer.Types 14.0.1016.290\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Microsoft.SqlServer.Types",
       "targetGraphs": [
         "net6.0-windows7.0"

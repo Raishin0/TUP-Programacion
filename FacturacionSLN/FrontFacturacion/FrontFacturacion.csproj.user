@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="formularios\FrmConsultarArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="formularios\FrmConsultarFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="formularios\FrmDetallesFactura.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="formularios\FrmModificarFactura.cs">
@@ -13,5 +19,13 @@
     <Compile Update="formularios\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="formularios\FrmReporteVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="formularios\reportes\DSFacturacion.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
 </Project>

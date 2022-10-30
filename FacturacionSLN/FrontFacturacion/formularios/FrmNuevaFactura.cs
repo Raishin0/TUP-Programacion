@@ -10,57 +10,60 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using DataApi.datos;
 using DataApi.dominio;
-using FrontCarpinteria.servicios.implementacion;
 using FrontFacturacion.servicios;
 using Newtonsoft.Json;
+using System.Security.Policy;
 
 namespace FrontFacturacion.formularios
 {
     public partial class FrmNuevaFactura : Form
     {
-        Factura factura;
-        public FrmNuevaFactura(FabricaServicio fabrica)
+        string urlApi = "http://localhost:5023/";
+        Factura nueva;
+        public FrmNuevaFactura()
         {
             InitializeComponent();
         }
 
         private async void FrmNuevaFactura_Load(object sender, EventArgs e)
         {
-            factura = new Factura();
+            nueva = new Factura();
 
-            await CargarProductosAsync();
-            ProximaFactura();
+            await CargarArticulosAsync();
+            await CargarComboAsync();
+            await ProximaFacturaAsync();
             DtpFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             TbxCliente.Text = "CONSUMIDOR FINAL";
-            this.ActiveControl = CbxArticulos; // Set foco al combo
         }
 
-        private async Task CargarProductosAsync()
+        private async Task CargarArticulosAsync()
         {
-            string url = "http://localhost:5031/productos";
+            string url = urlApi+"articulos";
             var data = await ClienteSingleton.GetInstance().GetAsync(url);
             List<Articulo> lst = JsonConvert.DeserializeObject<List<Articulo>>(data);
             CbxArticulos.DataSource = lst;
-            CbxArticulos.DisplayMember = "articulo";
-            CbxArticulos.ValueMember = "id_articulo";
+            CbxArticulos.DisplayMember = "descripcion";
+            CbxArticulos.ValueMember = "codigo";
+            CbxFormaPago.SelectedIndex = -1;
         }
 
 
-        private void CargarCombo()
+        private async Task CargarComboAsync()
         {
-            DataTable dataTable = gestor.ConsultaSQL("SP_CONSULTAR_FORMAS_PAGO");
-            if (dataTable != null)
-            {
-                CbxFormaPago.DataSource = dataTable;
-                CbxFormaPago.DisplayMember = "forma_pago";
-                CbxFormaPago.ValueMember = "id_forma_pago";
-                CbxFormaPago.SelectedIndex = -1;
-            }
+            string url = urlApi + "formasDePago";
+            var data = await ClienteSingleton.GetInstance().GetAsync(url);
+            Dictionary<int,string> lst = JsonConvert.DeserializeObject<Dictionary<int, string> > (data);
+            CbxFormaPago.DataSource = new BindingSource(lst, null);
+            CbxFormaPago.DisplayMember = "Value";
+            CbxFormaPago.ValueMember = "Key";
+            CbxFormaPago.SelectedIndex = -1;
         }
 
-        private void ProximaFactura()
+        private async Task ProximaFacturaAsync()
         {
-            int next = gestor.ProximaFactura();
+            string url = urlApi + "proximoNro";
+            var data = await ClienteSingleton.GetInstance().GetAsync(url);
+            int next = JsonConvert.DeserializeObject<int>(data);
             if (next > 0)
                 LblFactura.Text = "Factura Nº: " + next.ToString();
             else
@@ -68,21 +71,10 @@ namespace FrontFacturacion.formularios
 
         }
 
-        private void CargarArticulos()
-        {
-
-            DataTable dataTable = gestor.ConsultaSQL("SP_CONSULTAR_ARTICULOS");
-            if (dataTable != null)
-            {
-                CbxArticulos.DataSource = dataTable;
-                CbxArticulos.DisplayMember = "articulo";
-                CbxArticulos.ValueMember = "id_articulo";
-            }
-        }
 
         private void CalcularTotal()
         {
-            double total = factura.CalcularTotal();
+            double total = nueva.CalcularTotal();
             TbxTotal.Text = total.ToString();
         }
 
@@ -113,7 +105,7 @@ namespace FrontFacturacion.formularios
                         {
                             int valor = int.Parse(row.Cells["Cantidad"].Value.ToString()) + int.Parse(TbxCantidad.Text);
                             row.Cells["Cantidad"].Value = valor.ToString();
-                            factura.Detalles[row.Index].Cantidad = valor;
+                            nueva.Detalles[row.Index].Cantidad = valor;
                             CalcularTotal();
                         }
                         return;
@@ -121,16 +113,16 @@ namespace FrontFacturacion.formularios
                 }
             }
 
-            DataRowView item = (DataRowView)CbxArticulos.SelectedItem;
+            Articulo item = (Articulo)CbxArticulos.SelectedItem;
 
-            int art = Convert.ToInt32(item.Row.ItemArray[0]);
-            string nom = item.Row.ItemArray[1].ToString();
-            double pre = Convert.ToDouble(item.Row.ItemArray[2]);
+            int art = item.Codigo;
+            string nom = item.Descripcion;
+            double pre = item.Precio;
             Articulo a = new Articulo(art, nom, pre);
             int cantidad = Convert.ToInt32(TbxCantidad.Text);
 
             Detalle detalle = new Detalle(a, cantidad);
-            factura.AgregarDetalle(detalle);
+            nueva.AgregarDetalle(detalle);
             DgvDetalles.Rows.Add(new object[] { a.Descripcion,
             cantidad, a.Precio});
             CalcularTotal();
@@ -140,7 +132,7 @@ namespace FrontFacturacion.formularios
         {
             if (DgvDetalles.CurrentCell.ColumnIndex == 3 && DgvDetalles.Rows.Count > 0)
             {
-                factura.QuitarDetalle(DgvDetalles.CurrentRow.Index);
+                nueva.QuitarDetalle(DgvDetalles.CurrentRow.Index);
                 //click button:
                 DgvDetalles.Rows.Remove(DgvDetalles.CurrentRow);
                 //presupuesto.quitarDetalle();
@@ -175,13 +167,20 @@ namespace FrontFacturacion.formularios
             }
             GuardarFactura();
         }
-
-        private void GuardarFactura()
+        private async Task<bool> GuardarFacturaAsync(Factura oFactura)
         {
-            factura.Cliente = TbxCliente.Text;
-            factura.FormaPago = Convert.ToInt32(CbxFormaPago.SelectedValue);
-            factura.Fecha = DtpFecha.Value;
-            if (gestor.ConfirmarFactura(factura))
+            string url = urlApi+"factura";
+            string facturaJson = JsonConvert.SerializeObject(oFactura);
+            var result = await ClienteSingleton.GetInstance().PostAsync(url, facturaJson);
+            return result.Equals("true");
+        }
+
+        private async void GuardarFactura()
+        {
+            nueva.Cliente = TbxCliente.Text;
+            nueva.FormaPago = Convert.ToInt32(CbxFormaPago.SelectedValue);
+            nueva.Fecha = DtpFecha.Value;
+            if (await GuardarFacturaAsync(nueva))
             {
                 MessageBox.Show("Factura registrada", "Informe",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);

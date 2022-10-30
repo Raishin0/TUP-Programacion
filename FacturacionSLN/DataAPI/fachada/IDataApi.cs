@@ -11,6 +11,7 @@ namespace DataAPI.fachada
     public interface IDataApi
     {
         List<Articulo> ObtenerArticulos();
+        Dictionary<int, string> ObtenerFormasPago();
         int ObtenerProximoNro();
         bool Crear(Factura oFactura);
         bool Actualizar(Factura oFactura);

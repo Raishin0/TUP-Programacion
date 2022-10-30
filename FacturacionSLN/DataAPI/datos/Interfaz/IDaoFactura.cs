@@ -11,6 +11,7 @@ namespace DataApi.datos.Interfaz
     public interface IDaoFactura
     {
         List<Articulo> ObtenerArticulos();
+        Dictionary<int,string> ObtenerFormasPago();
         int ObtenerProximoNro();
         bool Crear(Factura oFactura);
         bool Actualizar(Factura oFactura);

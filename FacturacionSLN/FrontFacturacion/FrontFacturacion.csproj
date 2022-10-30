@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms" Version="150.1537.0" />
+    <PackageReference Include="Microsoft.SqlServer.Types" Version="14.0.1016.290" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
@@ -18,17 +19,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="formularios\reportes\DSArticulos.Designer.cs">
+    <Compile Update="formularios\reportes\DSFacturacion.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>DSArticulos.xsd</DependentUpon>
+      <DependentUpon>DSFacturacion.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="formularios\reportes\DSArticulos.xsd">
+    <None Update="formularios\reportes\DSFacturacion.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSArticulos.Designer.cs</LastGenOutput>
+      <LastGenOutput>DSFacturacion.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

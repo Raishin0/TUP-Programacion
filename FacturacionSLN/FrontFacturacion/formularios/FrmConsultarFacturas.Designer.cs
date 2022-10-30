@@ -33,10 +33,11 @@
             this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDFormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDFormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Ver = new System.Windows.Forms.DataGridViewButtonColumn();
             this.BtnSalir = new System.Windows.Forms.Button();
             this.BtnGenerar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,8 +52,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(339, 15);
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(396, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 35);
             this.label1.TabIndex = 0;
@@ -67,14 +69,16 @@
             this.NroFactura,
             this.Fecha,
             this.FormaPago,
-            this.IDFormaPago,
             this.Cliente,
+            this.IDFormaPago,
             this.Borrar,
-            this.Modificar});
-            this.DgvFacturas.Location = new System.Drawing.Point(28, 169);
+            this.Modificar,
+            this.Ver});
+            this.DgvFacturas.Location = new System.Drawing.Point(33, 195);
+            this.DgvFacturas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DgvFacturas.Name = "DgvFacturas";
             this.DgvFacturas.ReadOnly = true;
-            this.DgvFacturas.Size = new System.Drawing.Size(743, 327);
+            this.DgvFacturas.Size = new System.Drawing.Size(839, 377);
             this.DgvFacturas.TabIndex = 1;
             this.DgvFacturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvFacturas_CellContentClick);
             // 
@@ -97,19 +101,19 @@
             this.FormaPago.Name = "FormaPago";
             this.FormaPago.ReadOnly = true;
             // 
-            // IDFormaPago
-            // 
-            this.IDFormaPago.HeaderText = "IDFormaPago";
-            this.IDFormaPago.Name = "IDFormaPago";
-            this.IDFormaPago.ReadOnly = true;
-            this.IDFormaPago.Visible = false;
-            // 
             // Cliente
             // 
             this.Cliente.HeaderText = "Cliente";
             this.Cliente.Name = "Cliente";
             this.Cliente.ReadOnly = true;
             this.Cliente.Width = 200;
+            // 
+            // IDFormaPago
+            // 
+            this.IDFormaPago.HeaderText = "IDFormaPago";
+            this.IDFormaPago.Name = "IDFormaPago";
+            this.IDFormaPago.ReadOnly = true;
+            this.IDFormaPago.Visible = false;
             // 
             // Borrar
             // 
@@ -133,12 +137,24 @@
             this.Modificar.UseColumnTextForButtonValue = true;
             this.Modificar.Width = 75;
             // 
+            // Ver
+            // 
+            this.Ver.HeaderText = "Ver";
+            this.Ver.Name = "Ver";
+            this.Ver.ReadOnly = true;
+            this.Ver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ver.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Ver.Text = "Ver";
+            this.Ver.UseColumnTextForButtonValue = true;
+            this.Ver.Width = 75;
+            // 
             // BtnSalir
             // 
-            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir.Location = new System.Drawing.Point(358, 502);
+            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnSalir.Location = new System.Drawing.Point(418, 579);
+            this.BtnSalir.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnSalir.Name = "BtnSalir";
-            this.BtnSalir.Size = new System.Drawing.Size(75, 34);
+            this.BtnSalir.Size = new System.Drawing.Size(88, 39);
             this.BtnSalir.TabIndex = 2;
             this.BtnSalir.Text = "Salir";
             this.BtnSalir.UseVisualStyleBackColor = true;
@@ -146,10 +162,11 @@
             // 
             // BtnGenerar
             // 
-            this.BtnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGenerar.Location = new System.Drawing.Point(499, 90);
+            this.BtnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnGenerar.Location = new System.Drawing.Point(582, 104);
+            this.BtnGenerar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnGenerar.Name = "BtnGenerar";
-            this.BtnGenerar.Size = new System.Drawing.Size(91, 34);
+            this.BtnGenerar.Size = new System.Drawing.Size(106, 39);
             this.BtnGenerar.TabIndex = 3;
             this.BtnGenerar.Text = "Generar";
             this.BtnGenerar.UseVisualStyleBackColor = true;
@@ -158,57 +175,63 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(211, 73);
+            this.label2.Location = new System.Drawing.Point(246, 84);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.Size = new System.Drawing.Size(82, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Primera Fecha";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(217, 100);
+            this.label3.Location = new System.Drawing.Point(253, 115);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.Size = new System.Drawing.Size(76, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Ultima Fecha";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(247, 127);
+            this.label4.Location = new System.Drawing.Point(288, 147);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.Size = new System.Drawing.Size(44, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "Cliente";
             // 
             // TbxCliente
             // 
-            this.TbxCliente.Location = new System.Drawing.Point(293, 123);
+            this.TbxCliente.Location = new System.Drawing.Point(342, 142);
+            this.TbxCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TbxCliente.Name = "TbxCliente";
-            this.TbxCliente.Size = new System.Drawing.Size(200, 20);
+            this.TbxCliente.Size = new System.Drawing.Size(233, 23);
             this.TbxCliente.TabIndex = 7;
             // 
             // DtpPrimeraFecha
             // 
-            this.DtpPrimeraFecha.Location = new System.Drawing.Point(293, 69);
+            this.DtpPrimeraFecha.Location = new System.Drawing.Point(342, 80);
+            this.DtpPrimeraFecha.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DtpPrimeraFecha.Name = "DtpPrimeraFecha";
-            this.DtpPrimeraFecha.Size = new System.Drawing.Size(200, 20);
+            this.DtpPrimeraFecha.Size = new System.Drawing.Size(233, 23);
             this.DtpPrimeraFecha.TabIndex = 8;
             this.DtpPrimeraFecha.Value = new System.DateTime(2000, 9, 13, 21, 25, 0, 0);
             // 
             // DtpUltimaFecha
             // 
-            this.DtpUltimaFecha.Location = new System.Drawing.Point(293, 96);
+            this.DtpUltimaFecha.Location = new System.Drawing.Point(342, 111);
+            this.DtpUltimaFecha.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DtpUltimaFecha.Name = "DtpUltimaFecha";
-            this.DtpUltimaFecha.Size = new System.Drawing.Size(200, 20);
+            this.DtpUltimaFecha.Size = new System.Drawing.Size(233, 23);
             this.DtpUltimaFecha.TabIndex = 9;
             // 
             // FrmConsultarFacturas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 540);
+            this.ClientSize = new System.Drawing.Size(933, 623);
             this.Controls.Add(this.DtpUltimaFecha);
             this.Controls.Add(this.DtpPrimeraFecha);
             this.Controls.Add(this.TbxCliente);
@@ -219,6 +242,7 @@
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.DgvFacturas);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmConsultarFacturas";
             this.Text = "Consultar Facturas";
             this.Load += new System.EventHandler(this.FrmConsultarFacturas_Load);
@@ -233,13 +257,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView DgvFacturas;
         private System.Windows.Forms.Button BtnSalir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NroFactura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FormaPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDFormaPago;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
-        private System.Windows.Forms.DataGridViewButtonColumn Borrar;
-        private System.Windows.Forms.DataGridViewButtonColumn Modificar;
         private System.Windows.Forms.Button BtnGenerar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -247,5 +264,13 @@
         private System.Windows.Forms.TextBox TbxCliente;
         private System.Windows.Forms.DateTimePicker DtpPrimeraFecha;
         private System.Windows.Forms.DateTimePicker DtpUltimaFecha;
+        private DataGridViewTextBoxColumn NroFactura;
+        private DataGridViewTextBoxColumn Fecha;
+        private DataGridViewTextBoxColumn FormaPago;
+        private DataGridViewTextBoxColumn Cliente;
+        private DataGridViewTextBoxColumn IDFormaPago;
+        private DataGridViewButtonColumn Borrar;
+        private DataGridViewButtonColumn Modificar;
+        private DataGridViewButtonColumn Ver;
     }
 }

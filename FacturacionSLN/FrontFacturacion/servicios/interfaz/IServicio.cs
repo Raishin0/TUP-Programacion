@@ -1,5 +1,4 @@
-﻿using CarpinteriaApp.dominio;
-using DataApi.dominio;
+﻿using DataApi.dominio;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +10,8 @@ namespace FrontFacturacion.servicios.interfaz
 {
     public interface IServicio
     {
-        List<Articulo> ObtenerArticulosAsync();
+        List<Articulo> ObtenerArticulos();
+        Dictionary<int, string> ObtenerFormasPago();
         int ObtenerProximoNro();
         bool Crear(Factura oFactura);
         bool Actualizar(Factura oFactura);

@@ -21,12 +21,13 @@ namespace FrontFacturacion.servicios.implementacion
             dao = new DaoFactura();
         }
 
-        public async Task<List<Articulo>> ObtenerArticulos()
+        public List<Articulo> ObtenerArticulos()
         {
-            string url = "http://localhost:5031/productos";
-            var data = await ClienteSingleton.GetInstance().GetAsync(url);
-            List<Articulo> lst = JsonConvert.DeserializeObject<List<Articulo>>(data);
-            return lst;
+            return dao.ObtenerArticulos();
+        }
+        public Dictionary<int, string> ObtenerFormasPago()
+        {
+            return dao.ObtenerFormasPago();
         }
         public int ObtenerProximoNro()
         {

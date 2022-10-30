@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrontFacturacion.servicios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,10 @@ namespace FrontFacturacion.formularios
     public partial class FrmPrincipal : Form
     {
 
-        public FrmPrincipal()
+        private FabricaServicio fabrica;
+        public FrmPrincipal(FabricaServicio fabrica)
         {
+            this.fabrica = fabrica;
             InitializeComponent();
         }
 
@@ -40,7 +43,7 @@ namespace FrontFacturacion.formularios
             }
             if (e.ClickedItem.Text == "Consultar Facturas")
             {
-                FrmConsultarFacturas frmConsultarFacturas = new FrmConsultarFacturas();
+                FrmConsultarFacturas frmConsultarFacturas = new FrmConsultarFacturas(fabrica);
                 frmConsultarFacturas.Show();
             }
         }
@@ -58,8 +61,18 @@ namespace FrontFacturacion.formularios
 
         private void consultarVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmConsultarVentasArticulos frmConsultarVentasArticulos = new FrmConsultarVentasArticulos();
-            frmConsultarVentasArticulos.Show();
+        }
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            FrmReporteVentas frmReporteVentas = new FrmReporteVentas(fabrica);
+            frmReporteVentas.Show();
+        }
+
+        private void quienesSomosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Facturacion App", "Caso de la guia", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

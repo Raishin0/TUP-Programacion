@@ -23,6 +23,10 @@ namespace DataAPI.fachada
         {
             return dao.ObtenerArticulos();
         }
+        public Dictionary<int, string> ObtenerFormasPago()
+        {
+            return dao.ObtenerFormasPago();
+        }
         public int ObtenerProximoNro()
         {
             return dao.ObtenerProximoNro();

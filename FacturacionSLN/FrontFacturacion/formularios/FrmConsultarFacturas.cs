@@ -1,4 +1,9 @@
-﻿using System;
+﻿using DataApi.dominio;
+using FrontFacturacion.servicios;
+using FrontFacturacion.servicios.implementacion;
+using FrontFacturacion.servicios.interfaz;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,31 +12,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FrontFacturacion.formularios.dominio;
-using FrontFacturacion.formularios.datos;
 
 namespace FrontFacturacion.formularios
 {
     public partial class FrmConsultarFacturas : Form
     {
-        HelperDB gestor = HelperDB.ObtenerInstancia();
+        IServicio servicio;
+        FabricaServicio fabrica;
 
-        public FrmConsultarFacturas()
+        public FrmConsultarFacturas(FabricaServicio fabrica)
         {
+            this.fabrica = fabrica;
+            servicio = fabrica.CrearServicio();
             InitializeComponent();
         }
 
         private void CargarFacturas()
         {
-            List<Parametro> parametros = new List<Parametro>();
-            parametros.Add(new Parametro("@fecha_1", DtpPrimeraFecha.Value));
-            parametros.Add(new Parametro("@fecha_2", DtpUltimaFecha.Value));
-            parametros.Add(new Parametro("@cliente", TbxCliente.Text));
-            DataTable dataTable = gestor.ConsultaSQL("SP_CONSULTAR_MAESTRO",parametros);
+            List<Factura> lst = servicio.ObtenerFacturasPorFiltros(DtpPrimeraFecha.Value, DtpUltimaFecha.Value, TbxCliente.Text);
             DgvFacturas.Rows.Clear();
-            foreach(DataRow fila in dataTable.Rows)
+            foreach(Factura fila in lst)
             {
-                DgvFacturas.Rows.Add(new object[] { fila[0], fila[1], fila[2], fila[3], fila[4] });
+                DgvFacturas.Rows.Add(new object[] { fila.Codigo, fila.Fecha, fila.FormaPago, fila.Cliente});
             }
         }
 
@@ -51,27 +53,29 @@ namespace FrontFacturacion.formularios
             {
                 ModificarFactura((int)DgvFacturas.CurrentRow.Cells[0].Value,
                     (DateTime)DgvFacturas.CurrentRow.Cells[1].Value, 
-                    (int)DgvFacturas.CurrentRow.Cells[3].Value,
-                    (string)DgvFacturas.CurrentRow.Cells[4].Value);
+                    (int)DgvFacturas.CurrentRow.Cells[2].Value,
+                    (string)DgvFacturas.CurrentRow.Cells[3].Value);
+            }
+            if (DgvFacturas.CurrentCell.ColumnIndex == 7)
+            {
+                VerFactura((int)DgvFacturas.CurrentRow.Cells[0].Value);
             }
         }
 
         private void ModificarFactura(int nro, DateTime fecha, int formaPago, string cliente)
         {
             Factura factura = new Factura(nro, fecha, formaPago, cliente);
-            FrmModificarFactura frmModificarFactura = new FrmModificarFactura(factura);
+            FrmModificarFactura frmModificarFactura = new FrmModificarFactura(factura,fabrica);
             frmModificarFactura.Show();
         }
 
         private void QuitarFactura(int nroFactura)
         {
-            List<Parametro> lst = new List<Parametro>();
-            lst.Add(new Parametro("@factura_nro", nroFactura));
             if (MessageBox.Show($"Seguro que quiere quitar la factura Nº{nroFactura}?",
                 "Borrar",MessageBoxButtons.YesNo,MessageBoxIcon.Information) 
                 == DialogResult.Yes)
             {
-                if(gestor.EjecutarSQL("SP_DESACTIVAR_MAESTRO", lst) >  0)
+                if(servicio.Borrar(nroFactura))
 
                 {
                     MessageBox.Show("Factura eliminada", "Informe",
@@ -85,7 +89,11 @@ namespace FrontFacturacion.formularios
                 }
             }
         }
-
+        private void VerFactura(int nro)
+        {
+            FrmDetallesFactura frmDetallesFactura = new FrmDetallesFactura(nro, fabrica);
+            frmDetallesFactura.Show();
+        }
         private void FrmConsultarFacturas_Load(object sender, EventArgs e)
         {
             DtpPrimeraFecha.Format = DateTimePickerFormat.Short;
