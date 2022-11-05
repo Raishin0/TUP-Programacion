@@ -1,6 +1,6 @@
-﻿using DataApi.dominio;
+﻿using DataApi.datos.Implementacion;
+using DataApi.dominio;
 using FrontFacturacion.servicios;
-using FrontFacturacion.servicios.interfaz;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,11 +19,9 @@ namespace FrontFacturacion.formularios
         string urlApi = "http://localhost:5023/";
         Factura factura;
 
-        IServicio servicio;
-        public FrmModificarFactura(Factura factura,FabricaServicio fabrica)
+        public FrmModificarFactura(Factura factura)
         {
             this.factura = factura;
-            servicio = fabrica.CrearServicio();
             InitializeComponent();
         }
 
@@ -145,7 +143,7 @@ namespace FrontFacturacion.formularios
                 CalcularTotal();
             }
         }
-        private void BtnAceptar_Click(object sender, EventArgs e)
+        private async void BtnAceptar_ClickAsync(object sender, EventArgs e)
         {
             if (TbxCliente.Text == "")
             {
@@ -159,11 +157,11 @@ namespace FrontFacturacion.formularios
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            GuardarFactura();
+            await GuardarFacturaAsync();
         }
 
 
-        private void GuardarFactura()
+        private async Task GuardarFacturaAsync()
         {
             factura.Cliente = TbxCliente.Text;
             factura.FormaPago = Convert.ToInt32(CbxFormaPago.SelectedValue);
@@ -174,7 +172,7 @@ namespace FrontFacturacion.formularios
             //lst.Add(new Parametro("@forma_pago", factura.FormaPago));
             //lst.Add(new Parametro("@fecha", factura.Fecha));
             //lst.Add(new Parametro("@cliente", factura.Cliente));
-            if (servicio.Actualizar(factura))
+            if (await ActualizarAsync(factura))
             {
                 MessageBox.Show("Factura modificada", "Informe",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -188,6 +186,16 @@ namespace FrontFacturacion.formularios
 
 
         }
+
+        private async Task<bool> ActualizarAsync(Factura oFactura)
+        {
+
+            string url = urlApi + "factura";
+            string facturaJson = JsonConvert.SerializeObject(oFactura);
+            var result = await ClienteSingleton.GetInstance().PutAsync(url, facturaJson);
+            return result.Equals("true");
+        }
+
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();

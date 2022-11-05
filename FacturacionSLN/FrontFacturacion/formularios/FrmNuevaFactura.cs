@@ -23,11 +23,11 @@ namespace FrontFacturacion.formularios
         public FrmNuevaFactura()
         {
             InitializeComponent();
+            nueva = new Factura();
         }
 
         private async void FrmNuevaFactura_Load(object sender, EventArgs e)
         {
-            nueva = new Factura();
 
             await CargarArticulosAsync();
             await CargarComboAsync();
@@ -191,8 +191,6 @@ namespace FrontFacturacion.formularios
                 MessageBox.Show("ERROR. No se pudo registrar la factura",
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
     }
 }

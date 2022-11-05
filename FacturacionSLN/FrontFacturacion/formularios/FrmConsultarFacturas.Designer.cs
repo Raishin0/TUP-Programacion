@@ -170,7 +170,7 @@
             this.BtnGenerar.TabIndex = 3;
             this.BtnGenerar.Text = "Generar";
             this.BtnGenerar.UseVisualStyleBackColor = true;
-            this.BtnGenerar.Click += new System.EventHandler(this.BtnGenerar_Click);
+            this.BtnGenerar.Click += new System.EventHandler(this.BtnGenerar_ClickAsync);
             // 
             // label2
             // 

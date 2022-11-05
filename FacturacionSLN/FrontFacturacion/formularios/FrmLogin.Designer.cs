@@ -87,7 +87,7 @@
             this.BtnEntrar.TabIndex = 5;
             this.BtnEntrar.Text = "Entrar";
             this.BtnEntrar.UseVisualStyleBackColor = true;
-            this.BtnEntrar.Click += new System.EventHandler(this.BtnEntrar_Click);
+            this.BtnEntrar.Click += new System.EventHandler(this.BtnEntrar_ClickAsync);
             // 
             // BtnCancelar
             // 

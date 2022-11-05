@@ -22,13 +22,6 @@
     <Compile Update="formularios\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="formularios\FrmReporteVentas.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Update="formularios\reportes\DSFacturacion.xsd">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
+  <ItemGroup />
 </Project>

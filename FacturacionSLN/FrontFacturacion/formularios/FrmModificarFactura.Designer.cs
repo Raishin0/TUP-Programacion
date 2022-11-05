@@ -210,6 +210,7 @@ namespace FrontFacturacion.formularios
             this.BtnAgregar.TabIndex = 35;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // TbxCantidad
             // 
@@ -238,7 +239,7 @@ namespace FrontFacturacion.formularios
             this.BtnAceptar.TabIndex = 37;
             this.BtnAceptar.Text = "Aceptar";
             this.BtnAceptar.UseVisualStyleBackColor = true;
-            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
+            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_ClickAsync);
             // 
             // FrmModificarFactura
             // 

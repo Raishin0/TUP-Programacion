@@ -1,7 +1,5 @@
 ﻿using DataApi.dominio;
 using FrontFacturacion.servicios;
-using FrontFacturacion.servicios.implementacion;
-using FrontFacturacion.servicios.interfaz;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,19 +15,18 @@ namespace FrontFacturacion.formularios
 {
     public partial class FrmConsultarFacturas : Form
     {
-        IServicio servicio;
-        FabricaServicio fabrica;
-
-        public FrmConsultarFacturas(FabricaServicio fabrica)
+        string urlApi = "http://localhost:5023/";
+        public FrmConsultarFacturas()
         {
-            this.fabrica = fabrica;
-            servicio = fabrica.CrearServicio();
             InitializeComponent();
         }
 
-        private void CargarFacturas()
+        private async Task CargarFacturasAsync()
         {
-            List<Factura> lst = servicio.ObtenerFacturasPorFiltros(DtpPrimeraFecha.Value, DtpUltimaFecha.Value, TbxCliente.Text);
+            string url = urlApi + string.Format("facturas?inicio={0}&final={1}&cliente={2}", 
+                DtpPrimeraFecha.Value, DtpUltimaFecha.Value,TbxCliente.Text);
+            var data = await ClienteSingleton.GetInstance().GetAsync(url);
+            List<Factura> lst = JsonConvert.DeserializeObject<List<Factura>>(data);
             DgvFacturas.Rows.Clear();
             foreach(Factura fila in lst)
             {
@@ -46,7 +43,7 @@ namespace FrontFacturacion.formularios
         {
             if (DgvFacturas.CurrentCell.ColumnIndex == 5)
             {
-                QuitarFactura((int)DgvFacturas.CurrentRow.Cells[0].Value);
+                QuitarFacturaAsync((int)DgvFacturas.CurrentRow.Cells[0].Value);
             }
 
             if (DgvFacturas.CurrentCell.ColumnIndex == 6)
@@ -65,17 +62,17 @@ namespace FrontFacturacion.formularios
         private void ModificarFactura(int nro, DateTime fecha, int formaPago, string cliente)
         {
             Factura factura = new Factura(nro, fecha, formaPago, cliente);
-            FrmModificarFactura frmModificarFactura = new FrmModificarFactura(factura,fabrica);
+            FrmModificarFactura frmModificarFactura = new FrmModificarFactura(factura);
             frmModificarFactura.Show();
         }
 
-        private void QuitarFactura(int nroFactura)
+        private async Task QuitarFacturaAsync(int nroFactura)
         {
             if (MessageBox.Show($"Seguro que quiere quitar la factura Nº{nroFactura}?",
                 "Borrar",MessageBoxButtons.YesNo,MessageBoxIcon.Information) 
                 == DialogResult.Yes)
             {
-                if(servicio.Borrar(nroFactura))
+                if(await BorrarFacturaAsync(nroFactura))
 
                 {
                     MessageBox.Show("Factura eliminada", "Informe",
@@ -89,9 +86,18 @@ namespace FrontFacturacion.formularios
                 }
             }
         }
+
+        private async Task<bool> BorrarFacturaAsync(int nroFactura)
+        {
+            string url = urlApi + "factura/"+nroFactura.ToString();
+            var data = await ClienteSingleton.GetInstance().DeleteAsync(url);
+            bool res = JsonConvert.DeserializeObject<bool>(data);
+            return res;
+        }
+
         private void VerFactura(int nro)
         {
-            FrmDetallesFactura frmDetallesFactura = new FrmDetallesFactura(nro, fabrica);
+            FrmDetallesFactura frmDetallesFactura = new FrmDetallesFactura(nro);
             frmDetallesFactura.Show();
         }
         private void FrmConsultarFacturas_Load(object sender, EventArgs e)
@@ -101,9 +107,9 @@ namespace FrontFacturacion.formularios
             DtpUltimaFecha.Value = DateTime.Today;
         }
 
-        private void BtnGenerar_Click(object sender, EventArgs e)
+        private async void BtnGenerar_ClickAsync(object sender, EventArgs e)
         {
-            CargarFacturas();
+            await CargarFacturasAsync();
         }
     }
 }

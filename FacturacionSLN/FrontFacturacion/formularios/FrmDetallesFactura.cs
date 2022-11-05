@@ -1,5 +1,4 @@
 ﻿using DataApi.dominio;
-using FrontFacturacion.servicios.interfaz;
 using FrontFacturacion.servicios;
 using Newtonsoft.Json;
 using System;
@@ -19,18 +18,16 @@ namespace FrontFacturacion.formularios
         string urlApi = "http://localhost:5023/";
         int nroFactura;
         Factura factura;
-        IServicio servicio;
-        public FrmDetallesFactura(int nroFactura, FabricaServicio fabrica)
+        public FrmDetallesFactura(int nroFactura)
         {
             this.nroFactura = nroFactura;
-            servicio = fabrica.CrearServicio();
             InitializeComponent();
         }
 
         private async void FrmDetallesFactura_LoadAsync(object sender, EventArgs e)
         {
             await CargarComboAsync();
-            CargarFactura();
+            await CargarFacturaAsync();
         }
     
 
@@ -47,9 +44,11 @@ namespace FrontFacturacion.formularios
         }
 
 
-        private void CargarFactura()
+        private async Task CargarFacturaAsync()
         {
-            factura = servicio.ObtenerFacturaPorNro(nroFactura);
+            string url = urlApi + "factura/"+nroFactura.ToString();
+            var data = await ClienteSingleton.GetInstance().GetAsync(url);
+            factura = JsonConvert.DeserializeObject<Factura>(data);
             TbxCliente.Text = factura.Cliente;
             CbxFormaPago.SelectedValue = factura.FormaPago;
             DtpFecha.Value = factura.Fecha;

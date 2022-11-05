@@ -1,4 +1,7 @@
-﻿using FrontFacturacion.servicios;
+﻿using DataApi.dominio;
+using FrontFacturacion.servicios;
+using NetFramework;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +16,10 @@ namespace FrontFacturacion.formularios
 {
     public partial class FrmPrincipal : Form
     {
+        string urlApi = "http://localhost:5023/";
 
-        private FabricaServicio fabrica;
-        public FrmPrincipal(FabricaServicio fabrica)
+        public FrmPrincipal()
         {
-            this.fabrica = fabrica;
             InitializeComponent();
         }
         private void FrmPrincipal_Load(object sender, EventArgs e)
@@ -27,7 +29,7 @@ namespace FrontFacturacion.formularios
 
         private void Login()
         {
-            new FrmLogin(fabrica).ShowDialog();
+            new FrmLogin().ShowDialog();
         }
 
         private void MenuArchivo_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -52,7 +54,7 @@ namespace FrontFacturacion.formularios
             }
             if (e.ClickedItem.Text == "Consultar Facturas")
             {
-                FrmConsultarFacturas frmConsultarFacturas = new FrmConsultarFacturas(fabrica);
+                FrmConsultarFacturas frmConsultarFacturas = new FrmConsultarFacturas();
                 frmConsultarFacturas.Show();
             }
         }
@@ -68,10 +70,9 @@ namespace FrontFacturacion.formularios
         {
         }
 
-        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ventasToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-
-            FrmReporteVentas frmReporteVentas = new FrmReporteVentas(fabrica);
+            FrmReporteVentas frmReporteVentas = new FrmReporteVentas();
             frmReporteVentas.Show();
         }
 

@@ -95,6 +95,9 @@
             "projectReferences": {
               "D:\\Mis documentos\\FacuJuli21\\prog2\\TUP-Programacion\\FacturacionSLN\\DataAPI\\DataAPI.csproj": {
                 "projectPath": "D:\\Mis documentos\\FacuJuli21\\prog2\\TUP-Programacion\\FacturacionSLN\\DataAPI\\DataAPI.csproj"
+              },
+              "D:\\Mis documentos\\FacuJuli21\\prog2\\TUP-Programacion\\FacturacionSLN\\NetFramework\\NetFramework.csproj": {
+                "projectPath": "D:\\Mis documentos\\FacuJuli21\\prog2\\TUP-Programacion\\FacturacionSLN\\NetFramework\\NetFramework.csproj"
               }
             }
           }
@@ -109,17 +112,17 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
-            "Microsoft.ReportingServices.ReportViewerControl.Winforms": {
-              "target": "Package",
-              "version": "[150.1537.0, )"
-            },
-            "Microsoft.SqlServer.Types": {
-              "target": "Package",
-              "version": "[14.0.1016.290, )"
-            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "ReportViewerCore.WinForms": {
+              "target": "Package",
+              "version": "[15.1.17, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.4, )"
             }
           },
           "imports": [
@@ -143,6 +146,21 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "D:\\Mis documentos\\FacuJuli21\\prog2\\TUP-Programacion\\FacturacionSLN\\NetFramework\\NetFramework.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Mis documentos\\FacuJuli21\\prog2\\TUP-Programacion\\FacturacionSLN\\NetFramework\\NetFramework.csproj",
+        "projectName": "NetFramework",
+        "projectPath": "D:\\Mis documentos\\FacuJuli21\\prog2\\TUP-Programacion\\FacturacionSLN\\NetFramework\\NetFramework.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }
